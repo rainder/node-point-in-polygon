@@ -1,0 +1,24 @@
+{
+  "name": "@rainder/point-in-polygon",
+  "version": "0.0.1",
+  "description": "Fast point in polygon algorithm",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rainder/node-point-in-polygon.git"
+  },
+  "keywords": [
+    "point",
+    "in",
+    "polygon"
+  ],
+  "author": "Andrius Skerla",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/rainder/node-point-in-polygon/issues"
+  },
+  "homepage": "https://github.com/rainder/node-point-in-polygon#readme"
+}

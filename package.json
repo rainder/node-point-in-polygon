@@ -20,5 +20,9 @@
   "bugs": {
     "url": "https://github.com/rainder/node-point-in-polygon/issues"
   },
-  "homepage": "https://github.com/rainder/node-point-in-polygon#readme"
+  "homepage": "https://github.com/rainder/node-point-in-polygon#readme",
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "mocha": "^3.2.0"
+  }
 }

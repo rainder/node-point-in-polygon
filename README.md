@@ -1,5 +1,7 @@
 # Point in polygin
 
+supports `Polygon` and `Multipolygon`.
+
 ```js
 const PointInPolygon = require('@rainer/point-in-polygon');
 

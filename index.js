@@ -1,3 +1,3 @@
 'use strict';
 
-module.exports = require('./lib/point-in-polygon-wrapper');
+module.exports = require('./src/point-in-polygon-wrapper');

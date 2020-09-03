@@ -1,10 +1,12 @@
 {
   "name": "@rainder/point-in-polygon",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "description": "Fast point in polygon algorithm",
-  "main": "index.js",
+  "main": "build",
+  "types": "build",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "tsc -b ."
   },
   "repository": {
     "type": "git",
@@ -22,7 +24,12 @@
   },
   "homepage": "https://github.com/rainder/node-point-in-polygon#readme",
   "devDependencies": {
-    "chai": "^3.5.0",
-    "mocha": "^3.2.0"
+    "@types/chai": "^4.2.12",
+    "@types/mocha": "^8.0.3",
+    "@types/node": "^14.6.3",
+    "chai": "^4.2.0",
+    "mocha": "^8.1.3",
+    "ts-node": "^9.0.0",
+    "typescript": "^4.0.2"
   }
 }

@@ -2,8 +2,8 @@
 
 supports `Polygon` and `Multipolygon`.
 
-```js
-const PointInPolygon = require('@rainer/point-in-polygon');
+```typescript
+import { PointInPolygon } from '@rainer/point-in-polygon';
 
 //pre-process the polygon so it can be used frequently in the future
 const polygon = new PointInPolygon({

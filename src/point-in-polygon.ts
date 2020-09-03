@@ -2,6 +2,7 @@ import assert = require('assert');
 import { cloneObject } from './clone-object';
 import { BoundingBox, MultiPolygon, Point, Polygon, Vert } from './types';
 
+export * from './types';
 
 export class PointInPolygon {
   public boundingBoxes: BoundingBox[];

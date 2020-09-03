@@ -217,8 +217,8 @@
         "affectsGlobalScope": false
       },
       "./src/point-in-polygon.ts": {
-        "version": "1d89c0bf45f49a7888a9b28a4135f888e4a636950c8abf3e3ffda43cc85df30d",
-        "signature": "9af074338015cc8c3da75cdce1dd62e11267d6e247e7ce81f98cd5e39208af8e",
+        "version": "49217a3ca282b9f4823eb79b968863e241ea8e4ea58d3e4f14e07f515bf4ed81",
+        "signature": "33f49f9d147f85b262e99da4dd3fcf4bfb3129cf04dc2e828956fe72435f0064",
         "affectsGlobalScope": false
       },
       "./src/point-in-polygon.spec.ts": {

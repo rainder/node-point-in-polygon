@@ -217,12 +217,12 @@
         "affectsGlobalScope": false
       },
       "./src/point-in-polygon.ts": {
-        "version": "49217a3ca282b9f4823eb79b968863e241ea8e4ea58d3e4f14e07f515bf4ed81",
+        "version": "02850940e84e8f42b94bbab737f7f8a2075f58a296bba4eb3fc9b3dfe7525123",
         "signature": "33f49f9d147f85b262e99da4dd3fcf4bfb3129cf04dc2e828956fe72435f0064",
         "affectsGlobalScope": false
       },
       "./src/point-in-polygon.spec.ts": {
-        "version": "e73003971ce942ba863bd1d9f177e885715335f9d6492245c4f52c8ed32d1a89",
+        "version": "457e558b2f39e40151379d68412d4d63e553efbfc36ee121a2c4bb599785f112",
         "signature": "5feeb5e78d2d22ee1108cb08419f445a46fa41ab2f43cdd41ded0ba383f8debe",
         "affectsGlobalScope": false
       },

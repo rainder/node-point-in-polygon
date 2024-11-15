@@ -1,10 +1,12 @@
 import { expect } from 'chai';
 import { PointInPolygon } from './point-in-polygon';
+import {readFileSync} from "fs";
 
 describe('point-in-polygon', () => {
   const kualaLumpurGeometry = require('./stub/kuala-lumpur.timezone.stub.json').geometry;
   const londonGeometry = require('./stub/london.stub.json');
   const londonWithAHoleGeometry = require('./stub/london-with-a-hole.stub.json');
+  const germanyGeometry = require('./stub/germany.stub.json');
 
   it('should return true when point in polygon', async () => {
     const pip = new PointInPolygon(londonGeometry);
@@ -86,5 +88,19 @@ describe('point-in-polygon', () => {
     mem('pip2');
     const pip3 = new PointInPolygon(kualaLumpurGeometry);
     mem('pip3');
+  });
+
+  it('should work with troublesome polygon', async () => {
+    const pip  = new PointInPolygon(germanyGeometry);
+    
+    expect(pip.isPointInside({
+      type: 'Point',
+      coordinates: [1,1]
+    })).to.equals(false);
+
+    expect(pip.isPointInside({
+      type: 'Point',
+      coordinates: [9.6557588, 51.419285]
+    })).to.equals(true);
   });
 });

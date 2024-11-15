@@ -1,6 +1,6 @@
 {
   "name": "@rainder/point-in-polygon",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Fast point in polygon algorithm",
   "main": "build/point-in-polygon.js",
   "types": "build/point-in-polygon.d.ts",

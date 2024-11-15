@@ -20,8 +20,8 @@ export class PointInPolygon {
 
     const polygons: Polygon[] = PointInPolygon.toArrayOfPolygons(cloneObject(geometry));
 
-    this.boundingBoxes = polygons.map((polygon) => PointInPolygon.calculateBoundingBox(polygon));
-    this.verts = polygons.map((polygon) => PointInPolygon.calculateVert(polygon));
+    this.boundingBoxes = polygons.map(PointInPolygon.calculateBoundingBox);
+    this.verts = polygons.map(PointInPolygon.calculateVert);
   }
 
   /**
@@ -48,20 +48,20 @@ export class PointInPolygon {
    * @param polygon
    */
   private static calculateBoundingBox(polygon: Polygon): BoundingBox {
-    let minX;
-    let minY;
-    let maxX;
-    let maxY;
+    let minX = Infinity;
+    let minY = Infinity;
+    let maxX = -Infinity;
+    let maxY = -Infinity;
 
     for (const coords of polygon.coordinates) {
       for (const coord of coords) {
         const [y, x] = coord;
 
-        minX = Math.min(minX ?? x, x);
-        maxX = Math.max(maxX ?? x, x);
+        minX = Math.min(minX, x);
+        maxX = Math.max(maxX, x);
 
-        minY = Math.min(minY ?? y, y);
-        maxY = Math.max(maxY ?? y, y);
+        minY = Math.min(minY, y);
+        maxY = Math.max(maxY, y);
       }
     }
 
@@ -75,17 +75,10 @@ export class PointInPolygon {
    * @param polygon
    */
   private static calculateVert(polygon: Polygon): Vert {
-    // const size = polygon.coordinates.reduce((sum, item) => sum + item.length, 0);
-    // const vert2: Vert = new Array(size + 1 + (2 * polygon.coordinates.length));
-    const vert: Vert = [[0, 0]];
-
-    for (const array of polygon.coordinates) {
-      vert.push(...array, array[0], [0, 0]);
-    }
-
-    // console.log(vert.length, vert2.length);
-
-    return vert;
+    return polygon.coordinates.reduce((result, array) => result.concat(
+      array,
+      [array[0], [0, 0]],
+    ), [[0,0]])
   }
 
   /**
@@ -97,7 +90,7 @@ export class PointInPolygon {
     assert(typeof point === 'object', 'argument must be an object');
     assert('type' in point, 'object must have type property');
     assert('coordinates' in point, 'object must have coordinates property');
-    assert(point.type === 'Point', 'type must be `Point');
+    assert(point.type === 'Point', 'type must be `Point`');
 
     if (!this.pointInBoundingBox(point)) {
       return false;
@@ -113,9 +106,9 @@ export class PointInPolygon {
    * @private
    */
   private pointInBoundingBox(point: Point) {
-    return this.boundingBoxes.some((boundingBox) => {
-      const [y, x] = point.coordinates;
+    const [y, x] = point.coordinates;
 
+    return this.boundingBoxes.some((boundingBox) => {
       if (x < boundingBox[0][0] || x > boundingBox[1][0]) {
         return false;
       }
@@ -136,25 +129,19 @@ export class PointInPolygon {
    * @private
    */
   private isPointInPolygon(point: Point): boolean {
-    return this.verts.some((vert) => {
-      const [y, x] = point.coordinates;
+    const [y, x] = point.coordinates;
 
+    return this.verts.some((vert) => {
       let inside = false;
 
       for (let i = 0, j = vert.length - 1; i < vert.length; j = i++) {
-        const a = vert[i][0] > y;
-        const b = vert[j][0] > y;
+        const yi = vert[i][0];
+        const xi = vert[i][1];
+        const yj = vert[j][0];
+        const xj = vert[j][1];
 
-        if (a != b) {
-          const a = vert[j][1] - vert[i][1];
-          const b = y - vert[i][0];
-          const c = vert[j][0] - vert[i][0];
-          const d = vert[i][1];
-          const r = a * b / c + d;
-
-          if (x < r) {
-            inside = !inside;
-          }
+        if ((yi > y) !== (yj > y) && x < ((xj - xi) * (y - yi)) / (yj - yi) + xi) {
+          inside = !inside;
         }
       }
 
